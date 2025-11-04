@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDEOGAMES-PLACE</title>
+    <link rel="stylesheet" href="diseño.css">
+</head>
+<body>
+    <h1>VIDEOGAMES-PLACE</h1>
+<header>
+    <ul class = "menu horixontal">
+        <li><a href="#juegos">juegos</a></li>
+        <li><a href="#sagas">sagas</a></li>
+        <li><a href="#bibliioteca">biblioteca</a></li>
+        <li><a href="#recomendasiones">recomendados</a></li>
+    </ul>
+      <div id="buttons">
+            <button class="btn" data-category="accion"><a href="#accion">juegos de accion</a></button>
+            <button class="btn" data-category="aventura"><a href="#aventura">juegos de aventura</a></button>
+            <button class="btn" data-category="shotter"><a href="#shotter">juegos de disparos</a></button>
+            <button class="btn" data-category="lucha"><a href="#lucha">juegos de luchar</a></button>
+            <button class="btn" data-category="historia"><a href="#historia">juegos con historia</a></button>
+            <button class="btn" data-category="echoss"><a href="#echos">juegos sobre historia</a></button>
+            <button class="btn" data-category="estrategia"><a href="#estrategia">juegos de estrategia</a></button>
+            <button class="btn" data-category="pov"><a href="#pov">juegos de primera persona</a></button>
+            <button class="btn" data-category="segunda persona"><a href="#segunda persona">juegos en segunda persona</a></button>
+            <button class="btn" data-category="tercera persona"><a href="#tercera persona">juegos en tercera persona</a></button>
+            <button class="btn" data-category="single"><a href="#single">juegos de single player</a></button>
+            <button class="btn" data-category="multijugador"><a href="#multijugador">juegos multijugador</a></button>
+            <button class="btn" data-category="rol"><a href="#rol">juegos de rol</a></button>
+            <button class="btn" data-category="simulacion"><a href="#simulacion">juegos de simulacion</a></button>
+            <button class="btn" data-category="mundo abierto"><a href="#mundo abierto">juegos de mundo abierto</a></button>
+            <button class="btn" data-category="campaña"><a href="#campaña">juegos de campaña</a></button>
+            <button class="btn" data-category="supervivencia"><a href="#supervivencia">juego de supervivencia</a></button>
+            <button class="btn" data-category="creatividad"><a href="#creatividad">juego de creatividad</a></button>
+            <button class="btn" data-category="sigilo"><a href="#sigilo">juego de sigilo</a></button>
+     </div>
+
+</header>
+<main>
+    <img src="img/logo.png" alt="logo" class="logo">
+    <h2>Bienvenido a VIDEOGAMES-PLACE</h2>
+    <p>en esta pagina encontraras los mejores juegos del momento</p>
+    <artucle>
+        <img src="img/portada.jpg" alt="portada">
+        <p>en esta seccion encontraras los mejores juegos del momento</p>
+    </artucle>
+</main>
+<section id = "juegos" class = "section">
+    <h2>juegos</h2>
+    <p>en esta seccion encontraras los mejores juegos del momento</p>
+    <ul>
+        <div class="juego">
+            <li>
+                <h3>call of duty</h3>
+                <img src="img/cod.jpg" alt="cod">
+                <p>descripcion del juego</p>
+                <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de call of duty">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categorias de call of duty" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="categorias de call of duty" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="multijugador">multijugador</div>
+                    </button>
+                </div>
+            </li>
+            <label for="puntuacion">Puntuación:</label>
+<input type="number" id="puntuacion" name="puntuacion" value="50" min="1" max="100" oninput="sincronizarPorcentaje(this.value)">
+<label for="porcentaje">Porcentaje:</label>
+<input type="range" id="porcentaje" name="porcentaje" value="50" min="1" max="100" oninput="sincronizarPuntuacion(this.value)">
+
+<hr>
+
+<script>
+    function sincronizarPorcentaje(valor) {
+        const porcentajeInput = document.getElementById('porcentaje');
+        porcentajeInput.value = parseInt(valor); 
+    }
+    function sincronizarPuntuacion(valor) {
+        const puntuacionInput = document.getElementById('puntuacion');
+        puntuacionInput.value = parseInt(valor);
+    }
+</script>
+            <li>
+                <h3>gta</h3>
+                <img src="img/gta.jpg" alt="gta" class="miniatura">
+                <p>descripcion del juego</p>
+                <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de gta">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de gta" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de gta" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="categoria de gta" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categoria de gta" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="category de gta" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de gta" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de gta"data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <dic calss="categoria de gta" data-category="multijugador">multijugador</dic>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div class="categoria de gta" data-category="mundo abierto">mundo</div>
+                    </button>
+                </div>
+        <li>
+            <h3>halo</h3>
+            <img src="img/halo.jpg" alt="halo" class="miniatura">
+            <p>descripcion del juego</p>                
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de halo">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de gta" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="catrgoria de halo" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categoria de halo" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="estrategia" class="section"></section>
+                        <div class="categoria de halo" data-category="estrategia">estrategia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categoria de halo" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de halo" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categoria de halo" data-category="multijugador">multijugador</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de halo" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div class="categoria de halo" data-category="mundo abierto">mundo abierto</div>
+                    </button>
+                    <button>
+                        <section id="campaña" class="section"></section>
+                        <div class="categoria de halo" data-category="campaña">campaña</div>
+                    </button>
+                </div>
+        </li>
+        <li>
+            <h3>minecraft</h3>
+            <img src="img/minecraft.jpg" alt="minecraft" class="miniatura">
+            <p>descripcion del juego</p>
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de minecraft">
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de gta" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categoria de minecraft" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de minecraft" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de minecraft" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categoria de minecraft" data-category="multijugador">multijugador</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de minecraft" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div clas="categoria de minecraft" data-category="mundo abierto">mundo abierto</div>
+                    </button>
+                    <button>
+                        <section id="supervivencia" class="section"></section>
+                        <div class="categoria de minecraft" data-category="supervivencia">supervivencia</div>
+                    </button>
+                    <button>
+                        <section id="creatividad" class="section"></section>
+                        <div class="categoria de minecraft" data-category="creatividad">creatividad</div>
+                    </button>
+        </li>
+        <li>
+            <h3>assassin's creed</h3>
+            <img src="img/assassins creed.jpg" alt="assassins creed" class="miniatura">
+            <p>descripcion del juego</p>
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de assassins creed">S
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="lucha" class="section"></section>
+                        <div clas="categoria de assassins creed" data-category="lucha">lucha</div>      
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div clas="categoria de assassins creed" data-category="historia">con historia</div>
+                    </button>
+                    <button>
+                        <section id="echos" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="echos">sobre historia</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="tercera persona">en tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="rol" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="rol">rol</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="campaña" class="sectin"></section>
+                        <div class="categoria de assassins creed" data-category="campaña">campaña</div>
+                    </button>
+                    <button>
+                        <section id="sigil" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="sigilo">sigilo</div>
+                    </button>
+        </li>
+        </div>
+</section>
+
+<section id = "sagas" class = "section">
+    <h2>sagas</h2>
+    <p>en esta seccion encontraras los titulos que tienen sagas</p>
+    <ul>
+        <div class="juego">
+            <li>
+                <h3>call of duty</h3>
+                <img src="img/cod.jpg" alt="cod">
+                <p>descripcion del juego</p>
+                <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de call of duty">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categorias de call of duty" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="categorias de call of duty" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="multijugador">multijugador</div>
+                    </button>
+                </div>
+            </li>
+            <li>
+                <h3>gta</h3>
+                <img src="img/gta.jpg" alt="gta" class="miniatura">
+                <p>descripcion del juego</p>
+                <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de gta">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de gta" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de gta" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="categoria de gta" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categoria de gta" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="category de gta" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de gta" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de gta"data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <dic calss="categoria de gta" data-category="multijugador">multijugador</dic>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div class="categoria de gta" data-category="mundo abierto">mundo</div>
+                    </button>
+                </div>
+        <li>
+            <h3>halo</h3>
+            <img src="img/halo.jpg" alt="halo" class="miniatura">
+            <p>descripcion del juego</p>                
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de halo">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de gta" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="catrgoria de halo" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categoria de halo" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="estrategia" class="section"></section>
+                        <div class="categoria de halo" data-category="estrategia">estrategia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categoria de halo" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de halo" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categoria de halo" data-category="multijugador">multijugador</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de halo" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div class="categoria de halo" data-category="mundo abierto">mundo abierto</div>
+                    </button>
+                    <button>
+                        <section id="campaña" class="section"></section>
+                        <div class="categoria de halo" data-category="campaña">campaña</div>
+                    </button>
+                </div>
+        </li>
+        <li>
+            <h3>minecraft</h3>
+            <img src="img/minecraft.jpg" alt="minecraft" class="miniatura">
+            <p>descripcion del juego</p>
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de minecraft">
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de gta" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categoria de minecraft" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de minecraft" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de minecraft" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categoria de minecraft" data-category="multijugador">multijugador</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de minecraft" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div clas="categoria de minecraft" data-category="mundo abierto">mundo abierto</div>
+                    </button>
+                    <button>
+                        <section id="supervivencia" class="section"></section>
+                        <div class="categoria de minecraft" data-category="supervivencia">supervivencia</div>
+                    </button>
+                    <button>
+                        <section id="creatividad" class="section"></section>
+                        <div class="categoria de minecraft" data-category="creatividad">creatividad</div>
+                    </button>
+        </li>
+        <li>
+            <h3>assassin's creed</h3>
+            <img src="img/assassins creed.jpg" alt="assassins creed" class="miniatura">
+            <p>descripcion del juego</p>
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de assassins creed">S
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="lucha" class="section"></section>
+                        <div clas="categoria de assassins creed" data-category="lucha">lucha</div>      
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div clas="categoria de assassins creed" data-category="historia">con historia</div>
+                    </button>
+                    <button>
+                        <section id="echos" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="echos">sobre historia</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="tercera persona">en tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="rol" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="rol">rol</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="campaña" class="sectin"></section>
+                        <div class="categoria de assassins creed" data-category="campaña">campaña</div>
+                    </button>
+                    <button>
+                        <section id="sigil" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="sigilo">sigilo</div>
+                    </button>
+        </li>
+        </div>
+    
+    </section>
+
+<section id="biblioteca" class="section">
+    <h2>biblioteca</h2>
+    <p>en esta seccion encontraras tus juegos</p>
+    <ul>
+        <div class="juego">
+            <li>
+                <h3>call of duty</h3>
+                <img src="img/cod.jpg" alt="cod">
+                <p>descripcion del juego</p>
+                <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de call of duty">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categorias de call of duty" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="categorias de call of duty" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="multijugador">multijugador</div>
+                    </button>
+                </div>
+            </li>
+            <li>
+                <h3>gta</h3>
+                <img src="img/gta.jpg" alt="gta" class="miniatura">
+                <p>descripcion del juego</p>
+                <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de gta">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de gta" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de gta" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="categoria de gta" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categoria de gta" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="category de gta" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de gta" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de gta"data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <dic calss="categoria de gta" data-category="multijugador">multijugador</dic>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div class="categoria de gta" data-category="mundo abierto">mundo</div>
+                    </button>
+                </div>
+        <li>
+            <h3>halo</h3>
+            <img src="img/halo.jpg" alt="halo" class="miniatura">
+            <p>descripcion del juego</p>                
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de halo">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de gta" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="catrgoria de halo" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categoria de halo" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="estrategia" class="section"></section>
+                        <div class="categoria de halo" data-category="estrategia">estrategia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categoria de halo" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de halo" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categoria de halo" data-category="multijugador">multijugador</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de halo" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div class="categoria de halo" data-category="mundo abierto">mundo abierto</div>
+                    </button>
+                    <button>
+                        <section id="campaña" class="section"></section>
+                        <div class="categoria de halo" data-category="campaña">campaña</div>
+                    </button>
+                </div>
+        </li>
+        <li>
+            <h3>minecraft</h3>
+            <img src="img/minecraft.jpg" alt="minecraft" class="miniatura">
+            <p>descripcion del juego</p>
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de minecraft">
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de gta" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categoria de minecraft" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de minecraft" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de minecraft" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categoria de minecraft" data-category="multijugador">multijugador</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de minecraft" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div clas="categoria de minecraft" data-category="mundo abierto">mundo abierto</div>
+                    </button>
+                    <button>
+                        <section id="supervivencia" class="section"></section>
+                        <div class="categoria de minecraft" data-category="supervivencia">supervivencia</div>
+                    </button>
+                    <button>
+                        <section id="creatividad" class="section"></section>
+                        <div class="categoria de minecraft" data-category="creatividad">creatividad</div>
+                    </button>
+        </li>
+        <li>
+            <h3>assassin's creed</h3>
+            <img src="img/assassins creed.jpg" alt="assassins creed" class="miniatura">
+            <p>descripcion del juego</p>
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de assassins creed">S
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="lucha" class="section"></section>
+                        <div clas="categoria de assassins creed" data-category="lucha">lucha</div>      
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div clas="categoria de assassins creed" data-category="historia">con historia</div>
+                    </button>
+                    <button>
+                        <section id="echos" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="echos">sobre historia</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="tercera persona">en tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="rol" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="rol">rol</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="campaña" class="sectin"></section>
+                        <div class="categoria de assassins creed" data-category="campaña">campaña</div>
+                    </button>
+                    <button>
+                        <section id="sigil" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="sigilo">sigilo</div>
+                    </button>
+        </li>
+        </div>
+</section>
+
+<section id="recomendasiones" class="section">
+    <h2>recomendaciones</h2>
+    <p>en esta seccion encontraras los mejores juegos del momento</p>
+    <ul>
+        <div class="juego">
+            <li>
+                <h3>call of duty</h3>
+                <img src="img/cod.jpg" alt="cod">
+                <p>descripcion del juego</p>
+                <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de call of duty">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categorias de call of duty" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="categorias de call of duty" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categorias de juego call of duty" data-category="multijugador">multijugador</div>
+                    </button>
+                </div>
+            </li>
+            <li>
+                <h3>gta</h3>
+                <img src="img/gta.jpg" alt="gta" class="miniatura">
+                <p>descripcion del juego</p>
+                <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de gta">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de gta" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de gta" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="categoria de gta" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categoria de gta" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="category de gta" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de gta" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de gta"data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <dic calss="categoria de gta" data-category="multijugador">multijugador</dic>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div class="categoria de gta" data-category="mundo abierto">mundo</div>
+                    </button>
+                </div>
+        <li>
+            <h3>halo</h3>
+            <img src="img/halo.jpg" alt="halo" class="miniatura">
+            <p>descripcion del juego</p>                
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de halo">
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de gta" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="shotter" class="section"></section>
+                        <div class="catrgoria de halo" data-category="shotter">disparos</div>
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div class="categoria de halo" data-category="historia">historia</div>
+                    </button>
+                    <button>
+                        <section id="estrategia" class="section"></section>
+                        <div class="categoria de halo" data-category="estrategia">estrategia</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categoria de halo" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de halo" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categoria de halo" data-category="multijugador">multijugador</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de halo" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div class="categoria de halo" data-category="mundo abierto">mundo abierto</div>
+                    </button>
+                    <button>
+                        <section id="campaña" class="section"></section>
+                        <div class="categoria de halo" data-category="campaña">campaña</div>
+                    </button>
+                </div>
+        </li>
+        <li>
+            <h3>minecraft</h3>
+            <img src="img/minecraft.jpg" alt="minecraft" class="miniatura">
+            <p>descripcion del juego</p>
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de minecraft">
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de gta" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="pov" class="section"></section>
+                        <div class="categoria de minecraft" data-category="pov">primera persona</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de minecraft" data-category="tercera persona">tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de minecraft" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="multijugador" class="section"></section>
+                        <div class="categoria de minecraft" data-category="multijugador">multijugador</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de minecraft" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="mundo abierto" class="section"></section>
+                        <div clas="categoria de minecraft" data-category="mundo abierto">mundo abierto</div>
+                    </button>
+                    <button>
+                        <section id="supervivencia" class="section"></section>
+                        <div class="categoria de minecraft" data-category="supervivencia">supervivencia</div>
+                    </button>
+                    <button>
+                        <section id="creatividad" class="section"></section>
+                        <div class="categoria de minecraft" data-category="creatividad">creatividad</div>
+                    </button>
+        </li>
+        <li>
+            <h3>assassin's creed</h3>
+            <img src="img/assassins creed.jpg" alt="assassins creed" class="miniatura">
+            <p>descripcion del juego</p>
+            <div clas="puntuacion">
+                    <input type="radio" id="5 estrellas" name="rating" value="5">
+                    <label for="star-5"></label>
+                    <input type="radio" id="4 estrellas" name="rating" value="4">
+                    <label for="star-4"></label>        
+                    <input type="radio" id="3 estrellas" name="rating" value="3">
+                    <label for="star-3"></label>
+                    <input type="radio" id="2 estrellas" name="rating" value="2">
+                    <label for="star-2"></label>
+                    <input type="radio" id="1 estrella" name="rating" value="1">
+                    <label for="star-1"></label>
+                </div>
+                <div id="categorias de assassins creed">S
+                    <button>
+                        <section id="accion" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="accion">accion</div>
+                    </button>
+                    <button>
+                        <section id="aventura" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="aventura">aventura</div>
+                    </button>
+                    <button>
+                        <section id="lucha" class="section"></section>
+                        <div clas="categoria de assassins creed" data-category="lucha">lucha</div>      
+                    </button>
+                    <button>
+                        <section id="historia" class="section"></section>
+                        <div clas="categoria de assassins creed" data-category="historia">con historia</div>
+                    </button>
+                    <button>
+                        <section id="echos" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="echos">sobre historia</div>
+                    </button>
+                    <button>
+                        <section id="tercera persona" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="tercera persona">en tercera persona</div>
+                    </button>
+                    <button>
+                        <section id="single" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="single">single player</div>
+                    </button>
+                    <button>
+                        <section id="rol" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="rol">rol</div>
+                    </button>
+                    <button>
+                        <section id="simulacion" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="simulacion">simulacion</div>
+                    </button>
+                    <button>
+                        <section id="campaña" class="sectin"></section>
+                        <div class="categoria de assassins creed" data-category="campaña">campaña</div>
+                    </button>
+                    <button>
+                        <section id="sigil" class="section"></section>
+                        <div class="categoria de assassins creed" data-category="sigilo">sigilo</div>
+                    </button>
+        </li>
+        </div>
+        </section>
+
+<script src="trucos.js"></script>
+</body>
+</html>
