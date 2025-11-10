@@ -1,200 +1,254 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
-function TarjetaJuego({ juego, onEditar, onEliminar }) {
+
+const initialGames = [
+  {
+    id: "cod",
+    title: "Call of Duty",
+    img: "/img/cod.jpg",
+    description: "Shooter competitivo con campañas y multijugador.",
+    categories: ["accion", "shotter", "pov", "single", "multijugador"],
+    score: 50,
+  },
+  {
+    id: "gta",
+    title: "GTA",
+    img: "/img/gta.jpg",
+    description: "Mundo abierto, misiones y conducción urbana.",
+    categories: ["aventura", "mundo abierto", "tercera persona", "multijugador"],
+    score: 50,
+  },
+  {
+    id: "halo",
+    title: "Halo",
+    img: "/img/halo.jpg",
+    description: "FPS épico con campaña y modos competitivos.",
+    categories: ["shotter", "pov", "multijugador", "campaña"],
+    score: 50,
+  },
+  {
+    id: "minecraft",
+    title: "Minecraft",
+    img: "/img/minecraft.jpg",
+    description: "Sandbox, creatividad y supervivencia en mundo abierto.",
+    categories: ["aventura", "mundo abierto", "creatividad", "supervivencia"],
+    score: 50,
+  },
+  {
+    id: "ac",
+    title: "Assassin's Creed",
+    img: "/img/assassins creed.jpg",
+    description: "Acción/aventura con énfasis en historia y sigilo.",
+    categories: ["aventura", "historia", "sigilo", "tercera persona"],
+    score: 50,
+  },
+];
+
+const allCategories = [
+  "accion","aventura","shotter","lucha","historia","echos","estrategia",
+  "pov","tercera persona","single","multijugador","rol","simulacion",
+  "mundo abierto","campaña","supervivencia","creatividad","sigilo"
+];
+
+function Header({ onSelectCategory, activeCategory }) {
   return (
-    <div className="tarjeta-juego">
-      <h3>{juego.titulo}</h3>
-      <p><strong>Género:</strong> {juego.genero}</p>
-      <p><strong>Progreso:</strong> {juego.progreso}%</p>
-      <div className="acciones">
-        <button onClick={() => onEditar(juego)}>Editar</button>
-        <button onClick={() => onEliminar(juego.id)}>Eliminar</button>
-      </div>
-    </div>
-  );
-}
-
-function FormularioJuego({ onGuardar, juegoEditable, onCancelar }) {
-  const [titulo, setTitulo] = useState(juegoEditable ? juegoEditable.titulo : "");
-  const [genero, setGenero] = useState(juegoEditable ? juegoEditable.genero : "");
-  const [progreso, setProgreso] = useState(juegoEditable ? juegoEditable.progreso : 0);
-
-  const manejarSubmit = (e) => {
-    e.preventDefault();
-    const nuevoJuego = {
-      id: juegoEditable ? juegoEditable.id : Date.now(),
-      titulo,
-      genero,
-      progreso: Number(progreso),
-      reseñas: juegoEditable ? juegoEditable.reseñas : []
-    };
-    onGuardar(nuevoJuego);
-    setTitulo("");
-    setGenero("");
-    setProgreso(0);
-  };
-
-  return (
-    <form className="formulario" onSubmit={manejarSubmit}>
-      <h2>{juegoEditable ? "Editar Juego" : "Agregar Juego"}</h2>
-      <input
-        type="text"
-        placeholder="Título"
-        value={titulo}
-        onChange={(e) => setTitulo(e.target.value)}
-        required
-      />
-      <input
-        type="text"
-        placeholder="Género"
-        value={genero}
-        onChange={(e) => setGenero(e.target.value)}
-        required
-      />
-      <input
-        type="number"
-        placeholder="Progreso (%)"
-        value={progreso}
-        onChange={(e) => setProgreso(e.target.value)}
-        min="0"
-        max="100"
-      />
-      <button type="submit">Guardar</button>
-      {juegoEditable && <button onClick={onCancelar}>Cancelar</button>}
-    </form>
-  );
-}
-
-function ListaReseñas({ reseñas }) {
-  return (
-    <div className="lista-reseñas">
-      <h4>Reseñas</h4>
-      {reseñas.length === 0 ? (
-        <p>Sin reseñas aún.</p>
-      ) : (
-        reseñas.map((r, i) => (
-          <div key={i} className="reseña">
-            <p>"{r.texto}"</p>
-            <span>⭐ {r.puntuacion}/5</span>
-          </div>
-        ))
-      )}
-    </div>
-  );
-}
-
-function FormularioReseña({ onAgregarReseña }) {
-  const [texto, setTexto] = useState("");
-  const [puntuacion, setPuntuacion] = useState(5);
-
-  const manejarSubmit = (e) => {
-    e.preventDefault();
-    onAgregarReseña({ texto, puntuacion });
-    setTexto("");
-    setPuntuacion(5);
-  };
-
-  return (
-    <form className="formulario-reseña" onSubmit={manejarSubmit}>
-      <textarea
-        placeholder="Escribe una reseña..."
-        value={texto}
-        onChange={(e) => setTexto(e.target.value)}
-        required
-      />
-      <select value={puntuacion} onChange={(e) => setPuntuacion(Number(e.target.value))}>
-        {[1, 2, 3, 4, 5].map((n) => (
-          <option key={n} value={n}>
-            {n} ⭐
-          </option>
+    <header className="gt-header">
+      <h1 className="gt-title">VIDEOGAMES-PLACE</h1>
+      <nav className="gt-nav">
+        <ul>
+          <li><a href="#juegos">juegos</a></li>
+          <li><a href="#sagas">sagas</a></li>
+          <li><a href="#biblioteca">biblioteca</a></li>
+          <li><a href="#recomendaciones">recomendados</a></li>
+        </ul>
+      </nav>
+      <div className="gt-filters">
+        <button
+          className={`chip ${activeCategory === null ? "active" : ""}`}
+          onClick={() => onSelectCategory(null)}
+        >
+          Todos
+        </button>
+        {allCategories.slice(0,12).map(cat => (
+          <button
+            key={cat}
+            className={`chip ${activeCategory === cat ? "active" : ""}`}
+            onClick={() => onSelectCategory(cat)}
+            title={cat}
+          >
+            {cat}
+          </button>
         ))}
-      </select>
-      <button type="submit">Agregar Reseña</button>
-    </form>
+      </div>
+    </header>
   );
 }
 
-function EstadisticasPersonales({ juegos }) {
-  const total = juegos.length;
-  const promedioProgreso =
-    total > 0 ? (juegos.reduce((sum, j) => sum + j.progreso, 0) / total).toFixed(1) : 0;
+function GameCard({ game, onChangeScore }) {
+  const [localScore, setLocalScore] = useState(game.score);
+
+  function syncScore(value) {
+    const v = Number(value);
+    if (isNaN(v)) return;
+    const clamped = Math.max(1, Math.min(100, Math.round(v)));
+    setLocalScore(clamped);
+    onChangeScore(game.id, clamped);
+  }
 
   return (
-    <div className="estadisticas">
-      <h3>📊 Estadísticas</h3>
-      <p>Juegos en biblioteca: {total}</p>
-      <p>Progreso promedio: {promedioProgreso}%</p>
-    </div>
+    <article className="game-card" aria-labelledby={`title-${game.id}`}>
+      <img src={game.img} alt={game.title} className="game-thumb" />
+      <div className="game-body">
+        <h3 id={`title-${game.id}`}>{game.title}</h3>
+        <p className="game-desc">{game.description}</p>
+
+        <div className="game-cats">
+          {game.categories.map(c => (
+            <span key={c} className="cat-pill">{c}</span>
+          ))}
+        </div>
+
+        <div className="score-row">
+          <label>
+            Puntuación:
+            <input
+              type="number"
+              min="1"
+              max="100"
+              value={localScore}
+              onChange={(e) => syncScore(e.target.value)}
+            />
+          </label>
+          <label>
+            Porcentaje:
+            <input
+              type="range"
+              min="1"
+              max="100"
+              value={localScore}
+              onChange={(e) => syncScore(e.target.value)}
+            />
+          </label>
+        </div>
+      </div>
+    </article>
   );
 }
 
 export default function App() {
-  const [juegos, setJuegos] = useState([]);
-  const [juegoEditable, setJuegoEditable] = useState(null);
-  const [juegoSeleccionado, setJuegoSeleccionado] = useState(null);
+  const [games, setGames] = useState(initialGames);
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [query, setQuery] = useState("");
 
-  const agregarJuego = (juego) => {
-    if (juegoEditable) {
-      setJuegos(juegos.map((j) => (j.id === juego.id ? juego : j)));
-      setJuegoEditable(null);
-    } else {
-      setJuegos([...juegos, juego]);
-    }
-  };
+  const filtered = useMemo(() => {
+    return games.filter(g => {
+      const matchesCat = activeCategory ? g.categories.includes(activeCategory) : true;
+      const matchesQuery = query.trim() === "" || g.title.toLowerCase().includes(query.toLowerCase());
+      return matchesCat && matchesQuery;
+    });
+  }, [games, activeCategory, query]);
 
-  const eliminarJuego = (id) => {
-    setJuegos(juegos.filter((j) => j.id !== id));
-  };
-
-  const agregarReseña = (reseña) => {
-    setJuegos(
-      juegos.map((j) =>
-        j.id === juegoSeleccionado.id
-          ? { ...j, reseñas: [...(j.reseñas || []), reseña] }
-          : j
-      )
-    );
-  };
+  function handleChangeScore(id, value) {
+    setGames(prev => prev.map(g => g.id === id ? { ...g, score: value } : g));
+  }
 
   return (
-    <div className="app">
-      <h1>🎮 Game Tracker</h1>
+    <div className="gt-app">
+      <Header onSelectCategory={setActiveCategory} activeCategory={activeCategory} />
 
-      <FormularioJuego
-        onGuardar={agregarJuego}
-        juegoEditable={juegoEditable}
-        onCancelar={() => setJuegoEditable(null)}
-      />
+      <main className="gt-main">
+        <section className="hero">
+          <img src="/img/logo.png" alt="logo" className="logo" />
+          <div>
+            <h2>Bienvenido a VIDEOGAMES-PLACE</h2>
+            <p>En esta página encontrarás los mejores juegos del momento.</p>
+          </div>
+        </section>
 
-      <div className="contenedor">
-        <div className="biblioteca">
-          <h2>Mi Biblioteca</h2>
-          {juegos.length === 0 ? (
-            <p>No hay juegos añadidos.</p>
-          ) : (
-            juegos.map((j) => (
-              <div key={j.id} onClick={() => setJuegoSeleccionado(j)}>
-                <TarjetaJuego
-                  juego={j}
-                  onEditar={setJuegoEditable}
-                  onEliminar={eliminarJuego}
-                />
-              </div>
-            ))
-          )}
-        </div>
-
-        <div className="panel-derecho">
-          <EstadisticasPersonales juegos={juegos} />
-          {juegoSeleccionado && (
-            <div className="detalle-juego">
-              <h3>Detalles de: {juegoSeleccionado.titulo}</h3>
-              <ListaReseñas reseñas={juegoSeleccionado.reseñas || []} />
-              <FormularioReseña onAgregarReseña={agregarReseña} />
+        <section id="juegos" className="section">
+          <div className="section-head">
+            <h2>Juegos</h2>
+            <div className="search-row">
+              <input
+                aria-label="buscar juegos"
+                placeholder="Buscar juego..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
             </div>
-          )}
-        </div>
-      </div>
+          </div>
+
+          <div className="games-grid">
+            {filtered.map(game => (
+              <GameCard key={game.id} game={game} onChangeScore={handleChangeScore} />
+            ))}
+            {filtered.length === 0 && <p className="empty">No se encontraron juegos.</p>}
+          </div>
+        </section>
+        <section id="sagas" className="section">
+          <div className="section-head">
+            <h2>sagas</h2>
+            <div className="search-row">
+              <input
+                aria-label="buscar juegos"
+                placeholder="Buscar juego..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="games-grid">
+            {filtered.map(game => (
+              <GameCard key={game.id} game={game} onChangeScore={handleChangeScore} />
+            ))}
+            {filtered.length === 0 && <p className="empty">No se encontraron juegos.</p>}
+          </div>
+        </section>
+        <section id="biblioteca" className="section">
+          <div className="section-head">
+            <h2>biblioteca</h2>
+            <div className="search-row">
+              <input
+                aria-label="buscar juegos"
+                placeholder="Buscar juego..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="games-grid">
+            {filtered.map(game => (
+              <GameCard key={game.id} game={game} onChangeScore={handleChangeScore} />
+            ))}
+            {filtered.length === 0 && <p className="empty">No se encontraron juegos.</p>}
+          </div>
+        </section>
+        <section id="recomendaciones" className="section">
+          <div className="section-head">
+            <h2>recomendaciones</h2>
+            <div className="search-row">
+              <input
+                aria-label="buscar juegos"
+                placeholder="Buscar juego..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="games-grid">
+            {filtered.map(game => (
+              <GameCard key={game.id} game={game} onChangeScore={handleChangeScore} />
+            ))}
+            {filtered.length === 0 && <p className="empty">No se encontraron juegos.</p>}
+          </div>
+        </section>
+
+
+
+      </main>
     </div>
   );
 }
