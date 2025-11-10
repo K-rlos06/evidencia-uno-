@@ -1,94 +1,200 @@
+import React, { useState } from "react";
 
-function App() {
-
+function TarjetaJuego({ juego, onEditar, onEliminar }) {
   return (
-    <div>
-      <h1>VIDEOGAMES-PLACES</h1>
-      <header>
-        <ul className="menu horizontal">
-          <li><a href="#juegos">juegos</a></li>
-          <li><a href="#sagas">sagas</a></li>
-          <li><a href="#biblioteca">biblioteca</a></li>
-          <li><a href="#recomendasiones">recomendasiones</a></li>
-        </ul>
-        <div id="buttons">
-            <button class="btn" data-category="accion"><a href="#accion">juegos de accion</a></button>
-            <button class="btn" data-category="aventura"><a href="#aventura">juegos de aventura</a></button>
-            <button class="btn" data-category="shotter"><a href="#shotter">juegos de disparos</a></button>
-            <button class="btn" data-category="lucha"><a href="#lucha">juegos de luchar</a></button>
-            <button class="btn" data-category="historia"><a href="#historia">juegos con historia</a></button>
-            <button class="btn" data-category="echoss"><a href="#echos">juegos sobre historia</a></button>
-            <button class="btn" data-category="estrategia"><a href="#estrategia">juegos de estrategia</a></button>
-            <button class="btn" data-category="pov"><a href="#pov">juegos de primera persona</a></button>
-            <button class="btn" data-category="segunda persona"><a href="#segunda persona">juegos en segunda persona</a></button>
-            <button class="btn" data-category="tercera persona"><a href="#tercera persona">juegos en tercera persona</a></button>
-            <button class="btn" data-category="single"><a href="#single">juegos de single player</a></button>
-            <button class="btn" data-category="multijugador"><a href="#multijugador">juegos multijugador</a></button>
-            <button class="btn" data-category="rol"><a href="#rol">juegos de rol</a></button>
-            <button class="btn" data-category="simulacion"><a href="#simulacion">juegos de simulacion</a></button>
-            <button class="btn" data-category="mundo abierto"><a href="#mundo abierto">juegos de mundo abierto</a></button>
-            <button class="btn" data-category="campaña"><a href="#campaña">juegos de campaña</a></button>
-            <button class="btn" data-category="supervivencia"><a href="#supervivencia">juego de supervivencia</a></button>
-            <button class="btn" data-category="creatividad"><a href="#creatividad">juego de creatividad</a></button>
-            <button class="btn" data-category="sigilo"><a href="#sigilo">juego de sigilo</a></button>
-
-        </div>
-      </header>
-      <main>
-        <img src="img/logo.jpg" alt="logo" className="logo"></img>
-        <h2>bienvenido a videogames-places</h2>
-        <p>en esta pagina encotraras los mejores videojuegos del momnto</p>
-        <article>
-          <img src="img/portada.jpg" alt="portada"></img>
-          <p>en esta seccion encontraras los mejores videojuegos del momento</p>
-        </article>
-      </main>
-      <section id="juegos" className="section">
-        <h2>juegos</h2>
-        <p>en esta seccion encontraras los mejores juegos</p>
-        <ul>
-          <div className="juegos">
-            <li>
-              <h3>call of duty</h3>
-              <img src="img/cod.jpg" alt="cod"></img>
-              <p>descripcion del juego</p>
-              
-              <div id="categorias de call of duty">
-                <button>
-                  <section id="accion" className="section"></section>
-                  <div className="categorias de call of duty" data-category="accion">accion</div>
-                </button>
-                <button>
-                  <section id="shotter" className="section"></section>
-                  <div className="categorias de call of duty" data-category="shotter">shotter</div>
-                </button>
-                <button>
-                  <section id="historia" className="section"></section>
-                  <div className="categorias de call of duty" data-category="historia">historia</div>
-                </button>
-                <button>
-                  <section id="pov" className="section"></section>
-                  <div className="categorias de call of duty" data-category="pov">pov</div>
-                </button>
-                <button>
-                  <section id="tercera persona" className="section"></section>
-                  <div className="categorias de call of duty" data-category="tercera persona">tercera persona</div>
-                </button>
-                <button>
-                  <section id="single" className="section"></section>
-                  <div className="categorias de call of duty" data-category="single">single</div>
-                </button>
-                <button>
-                  <section id="multijugador" className="section"></section>
-                  <div className="categorias de call of duty" data-category="multijugador">multijugador</div>
-                </button>
-              </div>
-            </li>
-          </div>
-        </ul>
-      </section>
+    <div className="tarjeta-juego">
+      <h3>{juego.titulo}</h3>
+      <p><strong>Género:</strong> {juego.genero}</p>
+      <p><strong>Progreso:</strong> {juego.progreso}%</p>
+      <div className="acciones">
+        <button onClick={() => onEditar(juego)}>Editar</button>
+        <button onClick={() => onEliminar(juego.id)}>Eliminar</button>
+      </div>
     </div>
-  )
+  );
 }
 
-export default App
+function FormularioJuego({ onGuardar, juegoEditable, onCancelar }) {
+  const [titulo, setTitulo] = useState(juegoEditable ? juegoEditable.titulo : "");
+  const [genero, setGenero] = useState(juegoEditable ? juegoEditable.genero : "");
+  const [progreso, setProgreso] = useState(juegoEditable ? juegoEditable.progreso : 0);
+
+  const manejarSubmit = (e) => {
+    e.preventDefault();
+    const nuevoJuego = {
+      id: juegoEditable ? juegoEditable.id : Date.now(),
+      titulo,
+      genero,
+      progreso: Number(progreso),
+      reseñas: juegoEditable ? juegoEditable.reseñas : []
+    };
+    onGuardar(nuevoJuego);
+    setTitulo("");
+    setGenero("");
+    setProgreso(0);
+  };
+
+  return (
+    <form className="formulario" onSubmit={manejarSubmit}>
+      <h2>{juegoEditable ? "Editar Juego" : "Agregar Juego"}</h2>
+      <input
+        type="text"
+        placeholder="Título"
+        value={titulo}
+        onChange={(e) => setTitulo(e.target.value)}
+        required
+      />
+      <input
+        type="text"
+        placeholder="Género"
+        value={genero}
+        onChange={(e) => setGenero(e.target.value)}
+        required
+      />
+      <input
+        type="number"
+        placeholder="Progreso (%)"
+        value={progreso}
+        onChange={(e) => setProgreso(e.target.value)}
+        min="0"
+        max="100"
+      />
+      <button type="submit">Guardar</button>
+      {juegoEditable && <button onClick={onCancelar}>Cancelar</button>}
+    </form>
+  );
+}
+
+function ListaReseñas({ reseñas }) {
+  return (
+    <div className="lista-reseñas">
+      <h4>Reseñas</h4>
+      {reseñas.length === 0 ? (
+        <p>Sin reseñas aún.</p>
+      ) : (
+        reseñas.map((r, i) => (
+          <div key={i} className="reseña">
+            <p>"{r.texto}"</p>
+            <span>⭐ {r.puntuacion}/5</span>
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
+function FormularioReseña({ onAgregarReseña }) {
+  const [texto, setTexto] = useState("");
+  const [puntuacion, setPuntuacion] = useState(5);
+
+  const manejarSubmit = (e) => {
+    e.preventDefault();
+    onAgregarReseña({ texto, puntuacion });
+    setTexto("");
+    setPuntuacion(5);
+  };
+
+  return (
+    <form className="formulario-reseña" onSubmit={manejarSubmit}>
+      <textarea
+        placeholder="Escribe una reseña..."
+        value={texto}
+        onChange={(e) => setTexto(e.target.value)}
+        required
+      />
+      <select value={puntuacion} onChange={(e) => setPuntuacion(Number(e.target.value))}>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <option key={n} value={n}>
+            {n} ⭐
+          </option>
+        ))}
+      </select>
+      <button type="submit">Agregar Reseña</button>
+    </form>
+  );
+}
+
+function EstadisticasPersonales({ juegos }) {
+  const total = juegos.length;
+  const promedioProgreso =
+    total > 0 ? (juegos.reduce((sum, j) => sum + j.progreso, 0) / total).toFixed(1) : 0;
+
+  return (
+    <div className="estadisticas">
+      <h3>📊 Estadísticas</h3>
+      <p>Juegos en biblioteca: {total}</p>
+      <p>Progreso promedio: {promedioProgreso}%</p>
+    </div>
+  );
+}
+
+export default function App() {
+  const [juegos, setJuegos] = useState([]);
+  const [juegoEditable, setJuegoEditable] = useState(null);
+  const [juegoSeleccionado, setJuegoSeleccionado] = useState(null);
+
+  const agregarJuego = (juego) => {
+    if (juegoEditable) {
+      setJuegos(juegos.map((j) => (j.id === juego.id ? juego : j)));
+      setJuegoEditable(null);
+    } else {
+      setJuegos([...juegos, juego]);
+    }
+  };
+
+  const eliminarJuego = (id) => {
+    setJuegos(juegos.filter((j) => j.id !== id));
+  };
+
+  const agregarReseña = (reseña) => {
+    setJuegos(
+      juegos.map((j) =>
+        j.id === juegoSeleccionado.id
+          ? { ...j, reseñas: [...(j.reseñas || []), reseña] }
+          : j
+      )
+    );
+  };
+
+  return (
+    <div className="app">
+      <h1>🎮 Game Tracker</h1>
+
+      <FormularioJuego
+        onGuardar={agregarJuego}
+        juegoEditable={juegoEditable}
+        onCancelar={() => setJuegoEditable(null)}
+      />
+
+      <div className="contenedor">
+        <div className="biblioteca">
+          <h2>Mi Biblioteca</h2>
+          {juegos.length === 0 ? (
+            <p>No hay juegos añadidos.</p>
+          ) : (
+            juegos.map((j) => (
+              <div key={j.id} onClick={() => setJuegoSeleccionado(j)}>
+                <TarjetaJuego
+                  juego={j}
+                  onEditar={setJuegoEditable}
+                  onEliminar={eliminarJuego}
+                />
+              </div>
+            ))
+          )}
+        </div>
+
+        <div className="panel-derecho">
+          <EstadisticasPersonales juegos={juegos} />
+          {juegoSeleccionado && (
+            <div className="detalle-juego">
+              <h3>Detalles de: {juegoSeleccionado.titulo}</h3>
+              <ListaReseñas reseñas={juegoSeleccionado.reseñas || []} />
+              <FormularioReseña onAgregarReseña={agregarReseña} />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
