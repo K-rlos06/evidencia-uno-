@@ -11,7 +11,7 @@ export default function App() {
     );
   }, [dark]);
   // CATEGORÍAS DISPONIBLES
-  const categoriasDisponibles = ["acción", "aventura", "shotter", "historia", "achos", "estrategia", "pov", "segunda persona", "tercera persona", "single", "multijugador", "rol", "simulacion", "mundo abierto", "campaña", "supervivencia", "creatividad", "sigilo", "terror"]; // tú agregas más
+  const categoriasDisponibles = ["acción", "aventura", "shotter", "historia", "echos", "estrategia", "pov", "segunda persona", "tercera persona", "single", "multijugador", "rol", "simulacion", "mundo abierto", "campaña", "supervivencia", "creatividad", "sigilo", "terror"]; // tú agregas más
 
   const [filtroCategoria, setFiltroCategoria] = useState("");
   // JUEGOS BASE
